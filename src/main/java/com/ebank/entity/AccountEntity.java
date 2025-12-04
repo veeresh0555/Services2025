@@ -1,5 +1,7 @@
 package com.ebank.entity;
 
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,6 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -27,6 +30,9 @@ public class AccountEntity {
 
 	@OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private UserEntity user;
+
+	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<TransactionEntity> transaction;
 
 	public Long getId() {
 		return id;
@@ -58,6 +64,14 @@ public class AccountEntity {
 
 	public void setUser(UserEntity user) {
 		this.user = user;
+	}
+
+	public List<TransactionEntity> getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(List<TransactionEntity> transaction) {
+		this.transaction = transaction;
 	}
 
 }

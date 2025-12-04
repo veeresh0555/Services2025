@@ -27,6 +27,8 @@ public class Address {
 
 	@Column(name = "pincode")
 	private String pincode;
+	
+
 
 	public Long getId() {
 		return id;

@@ -5,6 +5,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
+import com.ebank.entity.AccountEntity;
 import com.ebank.entity.UserEntity;
 
 @Mapper(componentModel = "spring")
@@ -20,15 +21,16 @@ public interface UserMapper {
 	 */
 	UserEntity toEntity(UserRequest request);
 	
-	
+	AccountEntity toAccountEntity(AccountRequest request);
 	/**
 	 * 
 	 * @param entity
 	 * @return
 	 * 
-	 * Mapper from Entity to Response
+	 * Mapper from Entity to Response record
 	 */
 	UserResponse toResponse(UserEntity entity);
+	AccountNumberResponse toResponse(AccountEntity entity);
 	
 	/**
 	 * 
